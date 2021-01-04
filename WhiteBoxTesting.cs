@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using IIG.PasswordHashingUtils;
 using System;
 
 namespace KPI
