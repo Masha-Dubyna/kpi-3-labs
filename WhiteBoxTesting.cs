@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using IIG.PasswordHashingUtils;
 using System;
 
 namespace KPI
@@ -45,6 +44,12 @@ namespace KPI
         }
 
         [Test]
+        public void GetHash_WithNotLatinPassword()
+        {
+            Assert.DoesNotThrow(() => PasswordHasher.GetHash("тестік"));
+        }
+
+        [Test]
         public void GetHash_WithEmptyPassword()
         {
             Assert.IsNotEmpty(PasswordHasher.GetHash(""));
@@ -63,33 +68,21 @@ namespace KPI
         }
 
         [Test]
-        public void GetHash_WithTwoEmptyParameters()
-        {
-            Assert.IsNotEmpty(PasswordHasher.GetHash("", ""));
-        }
-
-        [Test]
         public void GetHash_WithSameSalt_TwoParameters()
         {
-            Assert.AreEqual(PasswordHasher.GetHash("testString", "my salt"), PasswordHasher.GetHash("testString", "my salt"));
+            Assert.AreEqual(PasswordHasher.GetHash("testString", "salt"), PasswordHasher.GetHash("testString", "salt"));
         }
 
         [Test]
         public void GetHash_WithDifferentSalt_TwoParameters()
         {
-            Assert.AreNotEqual(PasswordHasher.GetHash("testString", "mySalt"), PasswordHasher.GetHash("testString", "my salt"));
+            Assert.AreNotEqual(PasswordHasher.GetHash("testString", "Salt"), PasswordHasher.GetHash("testString", "salt"));
         }
 
         [Test]
         public void GetHash_WithDefaultSalt()
         {
             Assert.AreEqual(PasswordHasher.GetHash("testString"), PasswordHasher.GetHash("testString", "put your soul(or salt) here"));
-        }
-
-        [Test]
-        public void GetHash_WithThreeEmptyParameters()
-        {
-            Assert.IsNotEmpty(PasswordHasher.GetHash("", "", 0));
         }
 
         [Test]
