@@ -25,16 +25,16 @@ namespace KPI
         }
 
         [Test]
-        public void Constructor_WithNumberBiggerThanMax_ThrowsExeption()
-        {
-            Assert.Throws<ArgumentOutOfRangeException>(() => new MultipleBinaryFlag(17179868704));
-        }
-
-        [Test]
         public void Constructor_WithMinValue_DoesNotThrowExeption_GetReturnsFalse()
         {
             MultipleBinaryFlag flag = new MultipleBinaryFlag(2, false);
             Assert.False(flag.GetFlag());
+        }
+
+        [Test]
+        public void Constructor_WithBiggerThanMinValue_ThrowsExeption()
+        {
+            Assert.DoesNotThrow(() => new MultipleBinaryFlag(3));
         }
 
         [Test]
@@ -45,6 +45,18 @@ namespace KPI
         }
 
         [Test]
+        public void Constructor_WithNumberBiggerThanMax_ThrowsExeption()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => new MultipleBinaryFlag(17179868704));
+        }
+
+        [Test]
+        public void Constructor_WithNumberBiggerThanMaxBy2_ThrowsExeption()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => new MultipleBinaryFlag(17179868705));
+        }
+
+        [Test]
         public void Constructor_WithIntermediateValue_DoesNotThrowExeption_GetReturnsTrue()
         {
             MultipleBinaryFlag flag = new MultipleBinaryFlag(15);
@@ -52,7 +64,7 @@ namespace KPI
         }
 
         [Test]
-        public void Despose_IsFlagBecomeNull()
+        public void Dispose_IsFlagBecomeNull()
         {
             MultipleBinaryFlag flag = new MultipleBinaryFlag(15);
             flag.Dispose();

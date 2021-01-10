@@ -12,12 +12,23 @@
     <PackageReference Include="nunit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="IIG.BinaryFlag">
       <HintPath>..\..\..\..\Desktop\IIG.BinaryFlag.dll</HintPath>
     </Reference>
+    <Reference Include="IIG.DatabaseConnectionUtils">
+      <HintPath>..\..\..\..\Desktop\IIG.DatabaseConnectionUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="IIG.FileWorker">
+      <HintPath>..\..\..\..\Desktop\IIG.FileWorker.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IntegrationTesting\textFilesSrc\" />
   </ItemGroup>
 
 </Project>

@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[3.15.1, )"
             },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            },
             "nunit": {
               "target": "Package",
               "version": "[3.12.0, )"
